@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 
 import Header from './components/Header';
 import Home from './components/Home';
+import { Route, Routes } from 'react-router';
 
 function Copyright() {
   return (
@@ -28,7 +29,9 @@ export default function App() {
       <Header />
       <Container disableGutters>
         <Box my={3}>
-          <Home />
+          <Routes>
+            <Route path="/" Component={Home} />
+          </Routes>
         </Box>
       </Container>
       <Copyright />
