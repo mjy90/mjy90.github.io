@@ -5,11 +5,13 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+export type AccordionItem = {
+  title: string;
+  content: string | string[] | JSX.Element;
+};
+
 type AccordionProps = {
-  items: {
-    title: string;
-    content: string | string[] | JSX.Element;
-  }[];
+  items: AccordionItem[];
 };
 
 export default function Accordion({ items }: AccordionProps) {

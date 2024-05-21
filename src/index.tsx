@@ -17,5 +17,5 @@ root.render(
     <Router>
       <App />
     </Router>
-  </ThemeProvider>,
+  </ThemeProvider>
 );
