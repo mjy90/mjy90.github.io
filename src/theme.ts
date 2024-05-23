@@ -21,6 +21,30 @@ const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightBold: 700,
   },
+  components: {
+    MuiCard: {
+      defaultProps: {
+        variant: 'outlined',
+      },
+    },
+    MuiGrid: {
+      defaultProps: {
+        spacing: 3,
+        // padding: 4,
+        alignItems: 'center',
+      },
+      // variants: [
+      //   {
+      //     props: { container: true },
+      //     style: {
+      //       margin: 0,
+      //       padding: 0,
+      //       spacing: 3,
+      //     },
+      //   },
+      // ],
+    },
+  },
 });
 
 export default theme;
