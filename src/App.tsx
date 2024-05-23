@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Home from './routes/Home';
 import { Route, Routes } from 'react-router';
 import Projects from './routes/Projects';
+import Resume from './routes/Resume';
 
 function Copyright() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Box my={3}>
           <Routes>
             <Route path='/' Component={Home} />
+            <Route path='/resume' Component={Resume} />
             <Route path='/projects' Component={Projects} />
           </Routes>
         </Box>
