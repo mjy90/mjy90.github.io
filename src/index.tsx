@@ -11,11 +11,13 @@ const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
 
 root.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
-    <Router>
-      <App />
-    </Router>
-  </ThemeProvider>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
+  </React.StrictMode>
 );
