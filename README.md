@@ -21,19 +21,19 @@
   - [Why are you using a `HashRouter` instead of a `BrowserRouter`?](#why-are-you-using-a-hashrouter-instead-of-a-browserrouter)
 
 # Welcome to my software portfolio!
-This is a little React app intended to showcase my mad tech skillz and keep my coding chops sharp during an extended bout of unemployment. Woohoo! It's nothing mind-blowing or revolutionary, but I think it shows my technical capability, attention to detail, and eye for design.
+This is a little React app intended to showcase my mad tech skillz and keep my coding chops sharp during an extended bout of unemployment. Woohoo! It's nothing mind-blowing or revolutionary, but I think it showcases some of my technical capability, attention to detail, and eye for design.
 
 ## Tools Used
 This project uses React, TypeScript, Jest, and GitHub Actions. It's hosted for free with GitHub Pages, and I used [NameCheap](https://www.namecheap.com/) to buy and configure the custom domain [mikeyoung.tech](https://mikeyoung.tech). I also used [MUI](https://mui.com/) (formerly known as MaterialUI) for its ample component library and powerful theming tools, reducing the amount of overhead involved in getting the UI looking snazzy.
 
 ## What This Repo Showcases
-**Technical Skill**: That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React and the Node ecosystem. See the "Just an Absolute Word Salad of Skills and Tools" section of [my resume](https://www.mikeyoung.tech/#/resume) for other tools I'm familiar with.
+**Technical Skill** — That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React, GitHub Actions, and the Node ecosystem. See the "Just an Absolute Word Salad of Skills and Tools" section of [my resume](https://www.mikeyoung.tech/#/resume) for other tools I'm familiar with.
 
-**Focus on Quality**: That I ensure my code is adequately tested and documented. One of my primary focuses when writing code is that it's approachable to future devs and doesn't cause headaches. I'm not obsessed with code coverage percentages, but I do believe that all happy paths and reasonably foreseeable side paths should be tested when code ships. As bugs arise, tests for the edge cases addressed should ship with the fix.
+**Focus on Quality** — That I ensure my code is adequately tested and documented. One of my primary focuses when writing code is that it's approachable to future devs and doesn't cause headaches. I'm not obsessed with code coverage percentages, but I do believe that all happy paths and reasonably foreseeable side paths should be tested when code ships. As bugs arise, tests for the edge cases addressed should ship with the fix.
 
-**Design Sense**: I wouldn't call myself a designer by any means, but I like to think I have a knack for it. Sensible color schemes, consistent design features, and intuitive UX are not only important to a cohesive product, they're things I thoroughly enjoy creating.
+**Design Sense** — That I understand visual language. I wouldn't call myself a designer by any means, but I like to think I have a knack for it. Cohesive color schemes, consistent design features, and intuitive layouts aren't only important to an enjoyable user experience—they're things I thoroughly enjoy creating!
 
-**Personality**: I'm kind of a goober. I like to laugh, and I seriously hate being serious. I hope my odd word choices and unbecoming photos can convince you I'm *`nOt LiKe ThE oThEr BoYs`*.
+**Personality** — That I'm kind of a goober. I like to laugh, and I seriously hate being serious. I hope my odd word choices and unbecoming photos can convince you I'm *`nOt LiKe ThE oThEr DeVs`*.
 
 ## Using This as a Basis for Your Own Portfolio
 If you'd like to fork the repo to build your own portfolio site, read on! I'll walk you through:
@@ -151,7 +151,7 @@ Let's get that dope new domain set up:
 4. Make sure to click "Save all changes" when you're done!
 5. Head to the "GitHub Pages" section of your repo settings and add your custom domain to the "Custom domain" field. I also recommend checking the "Enforce HTTPS" box to ensure all traffic to your site is secure.
 
-Once the automated DNS check finishes (which might take a few minutes), your site should be live at your custom domain! `[your-github-username].github.io` will now redirect to the new domain too, so those old business cards are still good 😉
+Once the automated DNS check finishes (which might take a few minutes), your site should be live at your custom domain! `[your-github-username].github.io` will now redirect to the new domain too, so that old URL you handed out is still good 😉
 
 Once that check passes, you should see something like this:
 ![GitHub Pages settings page](/src/assets/GitHub%20Pages%20Config.png)
