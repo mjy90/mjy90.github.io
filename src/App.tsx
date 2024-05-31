@@ -5,10 +5,10 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 
 import Header from './components/Header';
-import Home from './routes/Home';
+import Home from './pages/Home';
 import { Route, Routes } from 'react-router';
-import Projects from './routes/Projects';
-import Resume from './routes/Resume';
+import Projects from './pages/Projects';
+import Resume from './pages/Resume';
 
 function Copyright() {
   return (

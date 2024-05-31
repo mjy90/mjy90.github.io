@@ -15,7 +15,7 @@ export default function ScaledText({ text, minWidth=300, maxWidth=1000, typograp
 
   useEffect(() => {
     // Scale each line of text by a factor of the difference of the container's width and the
-    // line's width, clampoed between the min and max widths.
+    // line's width, clamped between the min and max widths.
     const resizeText = () => {
       lineRefs.forEach((lineRef) => {
         if (lineRef.current && containerRef.current) {

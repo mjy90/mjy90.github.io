@@ -15,11 +15,17 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat, sans-serif',
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     fontWeightBold: 700,
+    body1: {
+      fontFamily: 'Roboto, sans-serif',
+    },
+    body2: {
+      fontFamily: 'Roboto, sans-serif',
+    },
   },
   components: {
     MuiCard: {
