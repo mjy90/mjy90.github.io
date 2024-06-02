@@ -42,13 +42,14 @@ function ResponsiveAppBar() {
               noWrap
               sx={{
                 mr: 2,
-                fontFamily: 'Montserrat',
+                fontFamily: 'Consolas, monospace',
                 fontWeight: 400,
                 letterSpacing: '.3rem',
                 textDecoration: 'none',
+                textTransform: 'none',
               }}
             >
-              mikeyoung.tech
+              myoung.dev
             </Typography>
           </LinkButton>
 
@@ -93,7 +94,7 @@ function ResponsiveAppBar() {
           {/* <Typography
             variant="h5"
           >
-            mikeyoung.tech
+            myoung.dev
           </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (

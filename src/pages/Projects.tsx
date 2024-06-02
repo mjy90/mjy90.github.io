@@ -7,7 +7,7 @@ import {
 
 import ProjectPreview, { Project } from '../components/ProjectPreview';
 
-import Portfolio from '../assets/mikeyoung.tech.png'
+import Portfolio from '../assets/myoung.dev.png'
 import FarmManager from '../assets/Farm Manager in Action.jpg'
 import DocFinder from '../assets/Doc Finder.png'
 import Mikerspace from '../assets/Mikerspace.png'
@@ -23,7 +23,7 @@ const projects: Project[] = [
   },
   {
     title: 'Farm Manager',
-    description: `A web app I built for managing the daily operations of Crop One Holdings' vertical
+    description: `A web app I built for managing the daily operations of Crop One's vertical
       hydroponic farming units. Built with Vue, Django, and PostgreSQL.
     `,
     images: [FarmManager],

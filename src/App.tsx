@@ -14,7 +14,7 @@ function Copyright() {
   return (
     <Typography variant='body2' color='text.secondary' align='center' my={3}>
       {'© '}
-      <Link color='inherit' href='https://mikeyoung.tech'>
+      <Link color='inherit' href='https://myoung.dev'>
         Mike Young
       </Link>{' '}
       {new Date().getFullYear()}

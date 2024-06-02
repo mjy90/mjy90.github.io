@@ -24,10 +24,10 @@
 This is a little React app intended to showcase my mad tech skillz and keep my coding chops sharp during an extended bout of unemployment. Woohoo! It's nothing mind-blowing or revolutionary, but I think it showcases some of my technical capability, attention to detail, and eye for design.
 
 ## Tools Used
-This project uses React, TypeScript, Jest, and GitHub Actions. It's hosted for free with GitHub Pages, and I used [NameCheap](https://www.namecheap.com/) to buy and configure the custom domain [mikeyoung.tech](https://mikeyoung.tech). I also used [MUI](https://mui.com/) (formerly known as MaterialUI) for its ample component library and powerful theming tools, reducing the amount of overhead involved in getting the UI looking snazzy.
+This project uses React, TypeScript, Jest, and GitHub Actions. It's hosted for free with GitHub Pages, and I used [NameCheap](https://www.namecheap.com/) to buy and configure the custom domain [myoung.dev](https://myoung.dev). I also used [MUI](https://mui.com/) (formerly known as MaterialUI) for its ample component library and powerful theming tools, reducing the amount of overhead involved in getting the UI looking snazzy.
 
 ## What This Repo Showcases
-**Technical Skill** — That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React, GitHub Actions, and the Node ecosystem. See the "Just an Absolute Word Salad of Skills and Tools" section of [my resume](https://www.mikeyoung.tech/#/resume) for other tools I'm familiar with.
+**Technical Skill** — That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React, GitHub Actions, and the Node ecosystem. See the "Just an Absolute Word Salad of Skills and Tools" section of [my resume](https://www.myoung.dev/#/resume) for other tools I'm familiar with.
 
 **Focus on Quality** — That I ensure my code is adequately tested and documented. One of my primary focuses when writing code is that it's approachable to future devs and doesn't cause headaches. I'm not obsessed with code coverage percentages, but I do believe that all happy paths and reasonably foreseeable side paths should be tested when code ships. As bugs arise, tests for the edge cases addressed should ship with the fix.
 
@@ -43,7 +43,7 @@ If you'd like to fork the repo to build your own portfolio site, read on! I'll w
 - Hooking up a custom domain, and
 - A bit about the design and architecture philosophy.
 
-If you found this project through GitHub and would like to see the site running, check out [mikeyoung.tech](https://mikeyoung.tech).
+If you found this project through GitHub and would like to see the site running, check out [myoung.dev](https://myoung.dev).
 
 # Setup
 Enough of the job-seeking drivel. Let's talk turkey and get this app runnin'!
@@ -129,7 +129,7 @@ For more information on configuring your GitHub Pages site, see the [GitHub Page
 At this point, you should be in a spot where you can just make some changes to the code, push to `main`, and see your changes reflected on your GitHub Pages site by going to `https://[your-github-username].github.io`!
 
 ## 5. (Optional) Configure a Custom Domain
-At this point, you've got a perfectly valid portfolio site. But if you want it to be wicked legit, kehd, nothin' beats a custom domain. I used [NameCheap](https://www.namecheap.com/) to buy and configure the domain [mikeyoung.tech](https://mikeyoung.tech), which is what I'll be showing you how to configure below. Whatever domain registrar you decide to use, the process should be similar.
+At this point, you've got a perfectly valid portfolio site. But if you want it to be wicked legit, kehd, nothin' beats a custom domain. I used [NameCheap](https://www.namecheap.com/) to buy and configure the domain [myoung.dev](https://myoung.dev), which is what I'll be showing you how to configure below. Whatever domain registrar you decide to use, the process should be similar.
 
 If you hit any snags, or are curious about more advanced use cases like subdomains, check out the [GitHub Pages docs on configuring custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
@@ -149,7 +149,7 @@ Let's get that dope new domain set up:
     | AAAA | @ | 2606:50c0:8003::153 | Automatic |
     | CNAME | www | [your-github-username].github.io | Automatic |
 4. Make sure to click "Save all changes" when you're done!
-5. Head to the "GitHub Pages" section of your repo settings and add your custom domain to the "Custom domain" field. I also recommend checking the "Enforce HTTPS" box to ensure all traffic to your site is secure.
+5. Head to the "GitHub Pages" section of your repo settings and add your custom domain to the "Custom domain" field with the format `www.[custom.domain]`. That `www` is important for HTTPS! I also recommend checking the "Enforce HTTPS" box to ensure all traffic to your site is secure. It'll take a few minutes and, if you're impatient like me, a couple retries of the DNS check for this option to be available.
 
 Once the automated DNS check finishes (which might take a few minutes), your site should be live at your custom domain! `[your-github-username].github.io` will now redirect to the new domain too, so that old URL you handed out is still good 😉
 

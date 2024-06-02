@@ -1,8 +1,8 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
 // A custom theme for this app
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     primary: {
       main: '#556cd6',
@@ -26,6 +26,14 @@ const theme = createTheme({
     body2: {
       fontFamily: 'Roboto, sans-serif',
     },
+    caption: {
+      fontFamily: 'Roboto, sans-serif',
+      fontStyle: 'italic',
+    },
+    overline: {
+      fontFamily: 'Roboto, sans-serif',
+      fontStyle: 'italic',
+    },
   },
   components: {
     MuiCard: {
@@ -36,7 +44,7 @@ const theme = createTheme({
     MuiGrid: {
       defaultProps: {
         spacing: 3,
-        // padding: 4,
+        padding: 3,
         alignItems: 'center',
       },
       // variants: [
@@ -52,5 +60,8 @@ const theme = createTheme({
     },
   },
 });
+
+// Make font sizes scale with the viewport width
+theme = responsiveFontSizes(theme);
 
 export default theme;
