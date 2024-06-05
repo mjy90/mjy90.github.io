@@ -53,7 +53,7 @@ export default function Projects() {
   ], [theme.palette.mode]);
 
   return (
-    <Container>
+    <Container sx={{ my: 3 }}>
       <Stack spacing={3}>
         <Typography variant='h1'>Notable Projects</Typography>
         <Typography>

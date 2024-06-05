@@ -27,7 +27,7 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
       ...(colorMode === 'light' ? {
           // palette values for light mode
           primary: {
-            main: colors.munsellBlue,
+            main: colors.feldgrauGreen,
             contrastText: grey[100],
           },
           secondary: { main: grey[900] },
@@ -80,6 +80,12 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
       },
     },
     components: {
+      MuiAppBar: {
+        defaultProps: {
+          enableColorOnDark: true,
+          sx: { backgroundImage: 'none' },
+        },
+      },
       MuiCard: {
         defaultProps: {
           variant: 'outlined',

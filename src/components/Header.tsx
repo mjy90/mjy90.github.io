@@ -79,7 +79,7 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
 
   return (
     <HideOnScroll {...props}>
-      <AppBar enableColorOnDark>
+      <AppBar position='sticky'>
         <Container>
           <Toolbar disableGutters>
             {/* Nav menu on mobile */}
@@ -119,14 +119,14 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
 
             {/* Site name */}
             <Box sx={{ flexGrow: 1 }}>
-              <LinkButton to='/' color='secondary' sx={{ mr: 2 }}>
+              <LinkButton to='/' color='inherit' sx={{ mr: 2 }}>
                 <Typography
                   variant='h6'
                   noWrap
                   sx={{
                     margin: 0,
-                    fontFamily: 'Consolas, monospace',
-                    fontWeight: 400,
+                    fontFamily: 'Courier New, monospace',
+                    fontWeight: 600,
                     letterSpacing: '.3rem',
                     textTransform: 'none',
                   }}
@@ -142,8 +142,9 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
                 <LinkButton
                   key={index}
                   to={page.path}
-                  color='secondary'
+                  color='inherit'
                   onClick={handleCloseNavMenu}
+                  sx={{ mr: 2 }}
                 >
                   {page.title}
                 </LinkButton>

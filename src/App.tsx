@@ -39,7 +39,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
-        <Container disableGutters sx={{ marginTop: 11, marginBottom: 3 }}>
+        <Container disableGutters sx={{ marginBottom: 3 }}>
           <Routes>
             <Route path='/' Component={Home} />
             <Route path='/resume' Component={Resume} />

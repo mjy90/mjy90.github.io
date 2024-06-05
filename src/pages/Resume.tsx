@@ -16,12 +16,11 @@ const options = {
   standardFontDataUrl: '/standard_fonts/',
 };
 
-const StyledDocument = styled(Document)<DocumentProps>(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  marginTop: '-24px',
-}));
+const StyledDocument = styled(Document)`
+  display: 'flex';
+  flexDirection: 'column';
+  alignItems: 'center';
+`;
 
 export default function Resume() {
   const [numPages, setNumPages] = useState<number>();
