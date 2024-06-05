@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Document, DocumentProps, Page, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { styled } from '@mui/material/styles';
@@ -28,12 +28,28 @@ export default function Resume() {
     setNumPages(nextNumPages);
   }
 
+  const [pageWidth, setPageWidth] = useState<number>();
+  useEffect(() => {
+    const resizePage = () => {
+      const pdfWidth = ResumeFile?.defaultWidth || 800;
+      const windowWidth = window.innerWidth;
+      const pageWidth = Math.min(pdfWidth, windowWidth);
+      setPageWidth(pageWidth);
+    };
+    // Resize the text
+    resizePage();
+    // Repeat when the window is resized.
+    window.addEventListener('resize', resizePage);
+    return () => window.removeEventListener('resize', resizePage);
+  });
+
   return (
     <StyledDocument file={ResumeFile} onLoadSuccess={onDocumentLoadSuccess} options={options}>
       {Array.from(new Array(numPages), (el, index) => (
         <Page
           key={`page_${index + 1}`}
           pageNumber={index + 1}
+          width={pageWidth}
         />
       ))}
     </StyledDocument>

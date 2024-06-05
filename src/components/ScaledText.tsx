@@ -8,7 +8,7 @@ type ScaledTextProps = {
   typographyProps?: TypographyOwnProps;
 };
 
-export default function ScaledText({ text, minWidth=300, maxWidth=1000, typographyProps={} }: ScaledTextProps) {
+export default function ScaledText({ text, minWidth=100, maxWidth=1000, typographyProps={} }: ScaledTextProps) {
   const lines = text.split('\n');
   const containerRef = useRef<HTMLDivElement>(null);
   const lineRefs = lines.map(() => useRef<HTMLDivElement>(null));

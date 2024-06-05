@@ -6,8 +6,8 @@ import {
   CardMedia,
   Typography,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
-import theme from '../theme';
 
 import AutoImageList from './AutoImageList';
 
@@ -25,6 +25,7 @@ type ProjectPreviewProps = {
 
 export default function ProjectPreview({ project, side }: ProjectPreviewProps) {
   const { title, description, images, link } = project;
+  const theme = useTheme();
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const imageElement = typeof images === 'function' ? images() : (
@@ -36,7 +37,7 @@ export default function ProjectPreview({ project, side }: ProjectPreviewProps) {
   const contentElement = (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       <CardContent sx={{ flex: '1 0 auto' }}>
-        <Typography variant='h2' component='div'>{title}</Typography>
+        <Typography gutterBottom variant='h2' component='div'>{title}</Typography>
         <Typography variant='body1' component='div'>{description}</Typography>
       </CardContent>
     </Box>

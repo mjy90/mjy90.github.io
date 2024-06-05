@@ -1,14 +1,21 @@
-import React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import React, { useState } from 'react';
+import { Route, Routes } from 'react-router';
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Link,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 
 import Header from './components/Header';
 import Home from './pages/Home';
-import { Route, Routes } from 'react-router';
 import Projects from './pages/Projects';
 import Resume from './pages/Resume';
+
+import { useTheme, ColorMode, ColorModeContext } from './theme';
 
 function Copyright() {
   return (
@@ -23,19 +30,24 @@ function Copyright() {
 }
 
 export default function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [colorMode, setColorMode] = useState<ColorMode>(prefersDarkMode ? 'dark' : 'light');
+  const theme = useTheme(colorMode);
+
   return (
-    <>
-      <Header />
-      <Container disableGutters>
-        <Box my={3}>
+    <ColorModeContext.Provider value={{ colorMode, setColorMode }}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header />
+        <Container sx={{ marginTop: 11, marginBottom: 3 }}>
           <Routes>
             <Route path='/' Component={Home} />
             <Route path='/resume' Component={Resume} />
             <Route path='/projects' Component={Projects} />
           </Routes>
-        </Box>
-      </Container>
-      <Copyright />
-    </>
+        </Container>
+        <Copyright />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }

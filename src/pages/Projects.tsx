@@ -31,14 +31,7 @@ const projects: Project[] = [
   },
   {
     title: 'Doc Finder',
-    description: `A tool for finding a doctor across multiple insurance providers.
-      In the backend, a daily job would check for new flat files, provided in various formats by
-      insurance carriers, extract and normalize that data, and store it in a SQL Server database.
-      The frontend was designed to be simple and easy-to-use to meet our clientele where they are,
-      since they weren't the most tech-savvy. Code-wise, the interface was a standalone modal
-      window that could be dropped into any page with a single line of code. This was important
-      because I was working from rather... shall we say "freeform" requirements, and I didn't
-      want to shoot Future Mike in the foot.
+    description: `A tool that made finding a doctor across multiple insurance providers much easier.
       Built with Bootstrap, jQuery, MVC.NET, SSIS, and SQL Server.
     `,
     images: [DocFinder],
@@ -46,16 +39,7 @@ const projects: Project[] = [
   },
   {
     title: 'The Mikerspace',
-    description: `A maker business I started, focusing mostly on woodworking. I threw together a
-      website, designed a snazzy logo, and built up a small inventory of products.
-      I sold (and still sell!) mostly home goods, and I did a couple of custom commissions for friends
-      and family. Christmas gifts were a big hit that year, too!
-      I also started a YouTube channel, but I pivoted away from that after uploading just one video.
-      There are a couple more half-done videos sitting on a hard drive along with dozens of hours of
-      footage from other projects. I'll get back to editing those one of these days...
-      Less technically impressive than the rest, but The Mikerspace represents a scary thing that I took a whack
-      at. I was fed up with a dead-end software job with toxic management, so I decided burning
-      through my savings to start a woodworking business was a worthwhile endeavor.
+    description: `A maker business I started, focusing mostly on woodworking.
       Built with Squarespace, a GoPro, and many hand and power tools.
     `,
     images: [Mikerspace, MikerspaceProducts, MikeWithPictureFrameAndDumbSmile],

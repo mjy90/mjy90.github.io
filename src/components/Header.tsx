@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -10,11 +9,21 @@ import {
   Container,
   Tooltip,
   MenuItem,
+  Switch,
+  Icon,
+  Stack,
+  Slide,
+  useScrollTrigger,
 } from '@mui/material';
-import { Menu as MenuIcon } from '@mui/icons-material';
+import {
+  Menu as MenuIcon,
+  LightMode,
+  DarkMode,
+} from '@mui/icons-material';
 
 import LinkButton from './LinkButton';
-import Monogram from '../assets/Monogram.png';
+
+import { ColorModeContext } from '../theme';
 
 const pages: { title: string, path: string }[] = [
   { title: 'Resume', path: 'resume' },
@@ -22,8 +31,44 @@ const pages: { title: string, path: string }[] = [
   { title: 'Blog', path: 'blog' },
 ];
 
-function ResponsiveAppBar() {
+function HideOnScroll(props: { window?: () => Window, children: React.ReactElement }) {
+  const { children } = props;
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+function ColorModeToggle() {
+  const { colorMode, setColorMode } = React.useContext(ColorModeContext);
+
+  return (
+    <Stack direction='row' alignItems='center'>
+      <Icon sx={{ marginTop: '-5px' }}>
+        <LightMode/>
+      </Icon>
+      <Tooltip title='Toggle light/dark theme' arrow>
+        <span>
+          <Switch
+            color='default'
+            checked={colorMode === 'dark'}
+            onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}
+          />
+        </span>
+      </Tooltip>
+      <Icon sx={{ marginTop: '-5px' }}>
+        <DarkMode />
+      </Icon>
+    </Stack>
+  );
+}
+
+export default function ResponsiveAppBar(props: React.PropsWithChildren) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const menuOpen = Boolean(anchorElNav);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -33,84 +78,82 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
-      <Container>
-        <Toolbar disableGutters>
-          <LinkButton to='/' color='secondary'>
-            <Typography
-              variant="h6"
-              noWrap
-              sx={{
-                mr: 2,
-                fontFamily: 'Consolas, monospace',
-                fontWeight: 400,
-                letterSpacing: '.3rem',
-                textDecoration: 'none',
-                textTransform: 'none',
-              }}
-            >
-              myoung.dev
-            </Typography>
-          </LinkButton>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="navigation menu"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={page.path}>{page.title}</Link>
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          {/* <Typography
-            variant="h5"
-          >
-            myoung.dev
-          </Typography> */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page, index) => (
-              <LinkButton
-                key={index}
-                to={page.path}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+    <HideOnScroll {...props}>
+      <AppBar enableColorOnDark>
+        <Container>
+          <Toolbar disableGutters>
+            {/* Nav menu on mobile */}
+            <Box sx={{ mr: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                id='menu-button'
+                size='large'
+                color='inherit'
+                aria-controls={menuOpen ? 'basic-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={menuOpen ? 'true' : undefined}
+                onClick={handleOpenNavMenu}
               >
-                {page.title}
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id='basic-menu'
+                anchorEl={anchorElNav}
+                open={menuOpen}
+                onClose={handleCloseNavMenu}
+                MenuListProps={{
+                  'aria-labelledby': 'menu-button',
+                }}
+              >
+                {pages.map((page, index) => (
+                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                    <Typography variant='button'>
+                      <LinkButton to={page.path} color='secondary'>{page.title}</LinkButton>
+                    </Typography>
+                  </MenuItem>
+                ))}
+                <MenuItem>
+                  <ColorModeToggle />
+                </MenuItem>
+              </Menu>
+            </Box>
+
+            {/* Site name */}
+            <Box sx={{ flexGrow: 1 }}>
+              <LinkButton to='/' color='secondary'>
+                <Typography
+                  variant='h6'
+                  noWrap
+                  sx={{
+                    mr: 2,
+                    fontFamily: 'Consolas, monospace',
+                    fontWeight: 400,
+                    letterSpacing: '.3rem',
+                    textTransform: 'none',
+                  }}
+                >
+                  myoung.dev
+                </Typography>
               </LinkButton>
-            ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Box>
+
+            {/* Nav buttons on desktop */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page, index) => (
+                <LinkButton
+                  key={index}
+                  to={page.path}
+                  color='secondary'
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2 }}
+                >
+                  {page.title}
+                </LinkButton>
+              ))}
+              <ColorModeToggle />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </HideOnScroll>
   );
 }
-export default ResponsiveAppBar;

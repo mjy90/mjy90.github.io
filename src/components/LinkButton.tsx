@@ -8,7 +8,7 @@ export type LinkButtonProps = ButtonProps & {
 
 export default function LinkButton(props: LinkButtonProps) {
   return (
-    <Button component={Link} {...props}>
+    <Button component={Link} sx={{ textDecoration: 'none' }} {...props}>
       {props.children}
     </Button>
   );
