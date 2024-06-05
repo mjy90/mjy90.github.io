@@ -119,12 +119,12 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
 
             {/* Site name */}
             <Box sx={{ flexGrow: 1 }}>
-              <LinkButton to='/' color='secondary'>
+              <LinkButton to='/' color='secondary' sx={{ mr: 2 }}>
                 <Typography
                   variant='h6'
                   noWrap
                   sx={{
-                    mr: 2,
+                    margin: 0,
                     fontFamily: 'Consolas, monospace',
                     fontWeight: 400,
                     letterSpacing: '.3rem',
@@ -144,7 +144,6 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
                   to={page.path}
                   color='secondary'
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2 }}
                 >
                   {page.title}
                 </LinkButton>

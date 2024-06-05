@@ -14,10 +14,10 @@ import { faqs } from '../constants/faqs';
 
 export default function Home() {
   return (
-    <Grid container alignItems='center'>
+    <Grid container sx={{ pr: 0 }}>
       {/* Title row */}
       <Grid item xs={12} sm={7}>
-        <ScaledText text={"mike young,\nsoftware\ndeveloper"} />
+        <ScaledText text={"mike young,\nsoftware\nengineer"} />
       </Grid>
       <Grid item xs={12} sm={5}>
         <img

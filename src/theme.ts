@@ -24,8 +24,7 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
   let theme = createTheme({
     palette: {
       mode: colorMode,
-      ...(colorMode === 'light'
-      ? {
+      ...(colorMode === 'light' ? {
           // palette values for light mode
           primary: {
             main: colors.munsellBlue,
@@ -37,39 +36,27 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
           divider: grey[800],
           background: {
             default: grey[100],
-            paper: grey[200],
           },
           text: {
             primary: grey[900],
             secondary: grey[800],
           },
-        }
-      : {
+        } : {
           // palette values for dark mode
           primary: { main: colors.feldgrauGreen },
           secondary: { main: grey[100] },
           success: { main: colors.mossGreenCopilot },
           error:  { main: colors.persianRedCopilot },
-          divider: grey[400],
+          divider: 'rgba(255, 255, 255, 0.12)',
           background: {
-            default: grey[900],
-            paper: grey[800],
+            paper: grey[900],
           },
           text: {
             primary: grey[200],
             secondary: grey[300],
           },
-        }),
-      // primary: {
-      //   main: '#556cd6',
-
-      // },
-      // secondary: {
-      //   main: '#fff',
-      // },
-      // error: {
-      //   main: red.A400,
-      // },
+        }
+      ),
     },
     typography: {
       fontFamily: 'Montserrat, sans-serif',
