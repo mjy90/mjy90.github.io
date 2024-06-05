@@ -24,12 +24,12 @@ export default function AutoImageList({ images, transformOrigin = 'top left' }: 
     >
       {images.map((image, index) => (
         <Grow
+          key={index}
           in={true}
           style={{ transformOrigin }}
           timeout={1000 * (index + 1)}
         >
           <ImageListItem
-            key={index}
             cols={index === 0 ? firstImageWidth : 1}
             sx={{ fit: 'crop' }}
           >

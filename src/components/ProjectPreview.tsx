@@ -26,17 +26,18 @@ type ProjectPreviewProps = {
 export default function ProjectPreview({ project, side }: ProjectPreviewProps) {
   const { title, description, images, link } = project;
   const theme = useTheme();
-  const isTinyScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const startWithImage = isTinyScreen || side === 'left';
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const startWithImage = isSmallScreen || side === 'left';
+  const mediaWidth = isSmallScreen ? 100 : 40;
 
   const imageElement = typeof images === 'function' ? images() : (
-    <CardMedia sx={{ width: (isTinyScreen ? '100%' : '40%') }}>
+    <CardMedia sx={{ width: `${mediaWidth}%` }}>
       <AutoImageList images={images} transformOrigin={startWithImage ? 'top left' : 'top right'} />
     </CardMedia>
   );
 
   const contentElement = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: `${(100 - mediaWidth) || 100}%` }}>
       <CardContent sx={{ flex: '1 0 auto' }}>
         <Typography gutterBottom variant='h2' component='div'>{title}</Typography>
         <Typography variant='body1' component='div'>{description}</Typography>
@@ -45,7 +46,7 @@ export default function ProjectPreview({ project, side }: ProjectPreviewProps) {
   );
 
   return (
-    <Card sx={{ display: 'flex', flexDirection: (isTinyScreen ? 'column' : 'row') }}>
+    <Card sx={{ display: 'flex', flexDirection: (isSmallScreen ? 'column' : 'row') }}>
       {startWithImage ? imageElement : contentElement}
       {startWithImage ? contentElement : imageElement}
     </Card>

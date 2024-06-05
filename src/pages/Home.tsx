@@ -14,7 +14,7 @@ import { faqs } from '../constants/faqs';
 
 export default function Home() {
   return (
-    <Grid container sx={{ pr: 0 }}>
+    <Grid container sx={{ padding: 0, pl: 3 }}>
       {/* Title row */}
       <Grid item xs={12} sm={7}>
         <ScaledText text={"mike young,\nsoftware\nengineer"} />

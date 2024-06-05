@@ -30,7 +30,7 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
             main: colors.munsellBlue,
             contrastText: grey[100],
           },
-          secondary: { main: grey[100] },
+          secondary: { main: grey[900] },
           success: { main: colors.mossGreen },
           error:  { main: colors.persianRed },
           divider: grey[800],

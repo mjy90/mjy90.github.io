@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Document, DocumentProps, Page, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -20,6 +20,7 @@ const StyledDocument = styled(Document)<DocumentProps>(() => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  marginTop: '-24px',
 }));
 
 export default function Resume() {
