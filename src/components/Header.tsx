@@ -19,16 +19,17 @@ import {
   Menu as MenuIcon,
   LightMode,
   DarkMode,
+  Launch,
 } from '@mui/icons-material';
 
 import LinkButton from './LinkButton';
 
 import { ColorModeContext } from '../theme';
 
-const pages: { title: string, path: string }[] = [
+const pages: { title: string, path: string, external?: boolean }[] = [
   { title: 'Resume', path: 'resume' },
   { title: 'Projects', path: 'projects' },
-  { title: 'Blog', path: 'blog' },
+  { title: 'On GitHub', path: 'https://github.com/mjy90/mjy90.github.io', external: true },
 ];
 
 function HideOnScroll(props: { window?: () => Window, children: React.ReactElement }) {
@@ -144,9 +145,11 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
                   to={page.path}
                   color='inherit'
                   onClick={handleCloseNavMenu}
+                  target={page.external ? '_blank' : undefined}
                   sx={{ mr: 2 }}
                 >
                   {page.title}
+                  {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
                 </LinkButton>
               ))}
               <ColorModeToggle />
