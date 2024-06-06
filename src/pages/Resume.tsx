@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Document, DocumentProps, Page, pdfjs } from 'react-pdf';
+import { Document, DocumentProps, Page, PageProps, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { styled } from '@mui/material';
 
@@ -16,11 +16,16 @@ const options = {
   standardFontDataUrl: '/standard_fonts/',
 };
 
-const StyledDocument = styled(Document)`
-  display: 'flex';
-  flexDirection: 'column';
-  alignItems: 'center';
-`;
+const StyledDocument = styled(Document)<DocumentProps>(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+}));
+
+const StyledPage = styled(Page)<PageProps>(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+}));
 
 export default function Resume() {
   const [numPages, setNumPages] = useState<number>();
@@ -46,7 +51,7 @@ export default function Resume() {
   return (
     <StyledDocument file={ResumeFile} onLoadSuccess={onDocumentLoadSuccess} options={options}>
       {Array.from(new Array(numPages), (el, index) => (
-        <Page
+        <StyledPage
           key={`page_${index + 1}`}
           pageNumber={index + 1}
           width={pageWidth}
