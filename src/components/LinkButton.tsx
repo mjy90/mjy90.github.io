@@ -6,8 +6,14 @@ export type LinkButtonProps = ButtonProps & LinkProps;
 
 export default function LinkButton(props: LinkButtonProps) {
   return (
-    <Button component={Link} sx={{ textDecoration: 'none' }} {...props}>
-      {props.children}
+    <Button
+      component={Link}
+      sx={{
+        textDecoration: 'none',
+        ':hover': { textDecoration: 'underline' },
+      }}
+      {...props}
+    >
     </Button>
   );
 }

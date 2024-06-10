@@ -1,6 +1,10 @@
 import React from 'react';
+import { LinkProps } from '@mui/material';
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles';
 import { red, grey } from '@mui/material/colors';
+
+import { LinkBehavior } from './components/LinkBehavior';
+import { light } from '@mui/material/styles/createPalette';
 
 export type ColorMode = 'light' | 'dark';
 
@@ -17,6 +21,16 @@ const colors = {
   mossGreenCopilot: '#8A9A5B',
   feldgrauGreen: '#3F4B3B',
   feldgrauGreenCopilot: '#4D5B5C',
+  text: {
+    light: {
+      primary: grey[900],
+      secondary: grey[800],
+    },
+    dark: {
+      primary: grey[200],
+      secondary: grey[300],
+    },
+  },
 };
 
 export function useTheme(colorMode: 'light' | 'dark'): Theme {
@@ -38,12 +52,11 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
             default: grey[100],
           },
           text: {
-            primary: grey[900],
-            secondary: grey[800],
+            ...colors.text.light,
           },
         } : {
           // palette values for dark mode
-          primary: { main: colors.feldgrauGreen },
+          primary: { main: colors.mossGreen },
           secondary: { main: grey[100] },
           success: { main: colors.mossGreenCopilot },
           error:  { main: colors.persianRedCopilot },
@@ -52,8 +65,7 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
             paper: grey[900],
           },
           text: {
-            primary: grey[200],
-            secondary: grey[300],
+            ...colors.text.dark,
           },
         }
       ),
@@ -80,12 +92,12 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
       },
     },
     components: {
-      MuiAppBar: {
-        defaultProps: {
-          enableColorOnDark: true,
-          sx: { backgroundImage: 'none' },
-        },
-      },
+      // MuiAppBar: {
+      //   defaultProps: {
+      //     enableColorOnDark: true,
+      //     sx: { backgroundImage: 'none' },
+      //   },
+      // },
       MuiCard: {
         defaultProps: {
           variant: 'outlined',
@@ -107,6 +119,25 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
         //     },
         //   },
         // ],
+      },
+      MuiLink: {
+        defaultProps: {
+          underline: 'hover',
+          color: 'inherit',
+          component: LinkBehavior,
+        } as LinkProps,
+      },
+      MuiButtonBase: {
+        defaultProps: {
+          LinkComponent: LinkBehavior,
+        },
+      },
+      MuiTabs: {
+        styleOverrides: {
+          indicator: {
+            backgroundColor: colors.text.dark.primary,
+          },
+        },
       },
     },
   });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Document, DocumentProps, Page, PageProps, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import { styled } from '@mui/material';
+import { Skeleton, styled } from '@mui/material';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -28,18 +28,20 @@ const StyledPage = styled(Page)<PageProps>(() => ({
 }));
 
 export default function Resume() {
+  const [isLoading, setIsLoading] = useState(true);
   const [numPages, setNumPages] = useState<number>();
   const onDocumentLoadSuccess = ({ numPages: nextNumPages }: PDFDocumentProxy): void => {
+    setIsLoading(false);
     setNumPages(nextNumPages);
+    console.log(`Loaded ${nextNumPages} pages`);
   }
 
-  const [pageWidth, setPageWidth] = useState<number>();
+  const [pageWidth, setPageWidth] = useState<number>(Math.min(800, window.innerWidth));
   useEffect(() => {
     const resizePage = () => {
       const pdfWidth = ResumeFile?.defaultWidth || 800;
-      const windowWidth = window.innerWidth;
-      const pageWidth = Math.min(pdfWidth, windowWidth);
-      setPageWidth(pageWidth);
+      const newPageWidth = Math.min(pdfWidth, window.innerWidth);
+      setPageWidth(newPageWidth);
     };
     // Resize the text
     resizePage();
@@ -49,8 +51,21 @@ export default function Resume() {
   });
 
   return (
-    <StyledDocument file={ResumeFile} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-      {Array.from(new Array(numPages), (el, index) => (
+    <StyledDocument
+      file={ResumeFile}
+      onLoadSuccess={onDocumentLoadSuccess}
+      options={options}
+      loading={
+        <Skeleton
+          variant='rectangular'
+          animation='wave'
+          height={pageWidth * 3}
+          width={pageWidth}
+          sx={{ mx: 'auto' }}
+        />
+      }
+    >
+      {Array.from(new Array(numPages), (_, index) => (
         <StyledPage
           key={`page_${index + 1}`}
           pageNumber={index + 1}

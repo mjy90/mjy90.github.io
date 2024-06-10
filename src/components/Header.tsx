@@ -1,30 +1,29 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   AppBar,
   Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
+  Breadcrumbs,
+  Button,
   Container,
-  Tooltip,
+  IconButton,
+  Menu,
   MenuItem,
-  Switch,
-  Icon,
-  Stack,
   Slide,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
   useScrollTrigger,
+  useTheme,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
-  LightMode,
-  DarkMode,
   Launch,
+  NavigateNext as NavigateNextIcon,
 } from '@mui/icons-material';
 
-import LinkButton from './LinkButton';
-
-import { ColorModeContext } from '../theme';
+import ColorModeToggle from './ColorModeToggle';
 
 const pages: { title: string, path: string, external?: boolean }[] = [
   { title: 'Resume', path: 'resume' },
@@ -43,31 +42,10 @@ function HideOnScroll(props: { window?: () => Window, children: React.ReactEleme
   );
 }
 
-function ColorModeToggle() {
-  const { colorMode, setColorMode } = React.useContext(ColorModeContext);
-
-  return (
-    <Stack direction='row' alignItems='center'>
-      <Icon sx={{ marginTop: '-5px' }}>
-        <LightMode/>
-      </Icon>
-      <Tooltip title='Toggle light/dark theme' arrow>
-        <span>
-          <Switch
-            color='default'
-            checked={colorMode === 'dark'}
-            onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}
-          />
-        </span>
-      </Tooltip>
-      <Icon sx={{ marginTop: '-5px' }}>
-        <DarkMode />
-      </Icon>
-    </Stack>
-  );
-}
-
 export default function ResponsiveAppBar(props: React.PropsWithChildren) {
+  const location = useLocation();
+  const page = pages.find(page => location.pathname === `/${page.path}`);
+  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const menuOpen = Boolean(anchorElNav);
 
@@ -83,75 +61,117 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
       <AppBar position='sticky'>
         <Container>
           <Toolbar disableGutters>
-            {/* Nav menu on mobile */}
-            <Box sx={{ mr: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                id='menu-button'
-                size='large'
-                color='inherit'
-                aria-controls={menuOpen ? 'basic-menu' : undefined}
-                aria-haspopup='true'
-                aria-expanded={menuOpen ? 'true' : undefined}
-                onClick={handleOpenNavMenu}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id='basic-menu'
-                anchorEl={anchorElNav}
-                open={menuOpen}
-                onClose={handleCloseNavMenu}
-                MenuListProps={{
-                  'aria-labelledby': 'menu-button',
-                }}
-              >
-                {pages.map((page, index) => (
-                  <MenuItem key={index} onClick={handleCloseNavMenu}>
-                    <Typography variant='button'>
-                      <LinkButton to={page.path} color='secondary'>{page.title}</LinkButton>
-                    </Typography>
+
+            {/* Mobile */}
+            <Box  sx={{display: { xs: 'flex', md: 'none' } }}>
+              {/* Nav menu */}
+              <Box sx={{ mr: 1}}>
+                <IconButton
+                  id='menu-button'
+                  size='large'
+                  color='inherit'
+                  aria-controls={menuOpen ? 'basic-menu' : undefined}
+                  aria-haspopup='true'
+                  aria-expanded={menuOpen ? 'true' : undefined}
+                  onClick={handleOpenNavMenu}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id='basic-menu'
+                  anchorEl={anchorElNav}
+                  open={menuOpen}
+                  onClose={handleCloseNavMenu}
+                  MenuListProps={{
+                    'aria-labelledby': 'menu-button',
+                  }}
+                >
+                  {pages.map((page, index) => (
+                    <MenuItem key={index} onClick={handleCloseNavMenu}>
+                      <Typography variant='button'>
+                        <Button href={page.path} color='secondary' aria-label={page.title}>
+                          {page.title}
+                          {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
+                        </Button>
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                  <MenuItem>
+                    <Box sx={{ mx: 'auto' }}>
+                      <ColorModeToggle />
+                    </Box>
                   </MenuItem>
-                ))}
-                <MenuItem>
-                  <ColorModeToggle />
-                </MenuItem>
-              </Menu>
+                </Menu>
+              </Box>
+
+              <Box sx={{ flexGrow: 1 }}>
+                {/* Breadcrumbs */}
+                <Breadcrumbs
+                  color='inherit'
+                  separator={<NavigateNextIcon fontSize="small" />}
+                  aria-label='breadcrumb'
+                >
+                  {/* Site name */}
+                  <Button href='/' color='inherit'>
+                    <Typography
+                      variant='h6'
+                      noWrap
+                      sx={{
+                        margin: 0,
+                        fontFamily: 'Courier New, monospace',
+                        fontWeight: 600,
+                        letterSpacing: '.3rem',
+                        textTransform: 'none',
+                      }}
+                    >
+                      myoung.dev
+                    </Typography>
+                  </Button>
+                  {/* Current page */}
+                  {location.pathname !== '/' && (
+                    <Button href={page?.path} color='inherit'>
+                      {page ? page.title : 'Home'}
+                    </Button>
+                  )}
+                </Breadcrumbs>
+              </Box>
             </Box>
 
-            {/* Site name */}
-            <Box sx={{ flexGrow: 1 }}>
-              <LinkButton to='/' color='inherit' sx={{ mr: 2 }}>
-                <Typography
-                  variant='h6'
-                  noWrap
+            {/* Desktop */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1 }}>
+              {/* Nav tabs */}
+              <Tabs
+                value={location.pathname}
+                textColor='inherit'
+                sx={{ flexGrow: 1, mr: 2 }}
+              >
+                <Tab
+                  value='/'
+                  label='myoung.dev'
+                  href='/'
                   sx={{
                     margin: 0,
                     fontFamily: 'Courier New, monospace',
                     fontWeight: 600,
+                    fontSize: theme.typography.h5.fontSize,
                     letterSpacing: '.3rem',
                     textTransform: 'none',
+                    marginRight: 'auto',
                   }}
-                >
-                  myoung.dev
-                </Typography>
-              </LinkButton>
-            </Box>
-
-            {/* Nav buttons on desktop */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page, index) => (
-                <LinkButton
-                  key={index}
-                  to={page.path}
-                  color='inherit'
-                  onClick={handleCloseNavMenu}
-                  target={page.external ? '_blank' : undefined}
-                  sx={{ mr: 2 }}
-                >
-                  {page.title}
-                  {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
-                </LinkButton>
-              ))}
+                />
+                {/* <Box sx={{ display: 'flex', flexGrow: 1, margin: 'auto' }} /> */}
+                {pages.map((page, index) => (
+                  <Tab
+                    key={index}
+                    value={`/${page.path}`} // Add the slash to match location.pathname
+                    label={page.title}
+                    icon={page.external ? <Launch fontSize='inherit' /> : undefined}
+                    iconPosition='end'
+                    href={page.path}
+                    target={page.external ? '_blank' : undefined}
+                  />
+                ))}
+              </Tabs>
               <ColorModeToggle />
             </Box>
           </Toolbar>
