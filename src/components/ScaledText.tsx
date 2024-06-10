@@ -8,14 +8,14 @@ type ScaledTextProps = {
   typographyProps?: TypographyOwnProps;
 };
 
-export default function ScaledText({ text, minWidth=300, maxWidth=1000, typographyProps={} }: ScaledTextProps) {
+export default function ScaledText({ text, minWidth=100, maxWidth=1000, typographyProps={} }: ScaledTextProps) {
   const lines = text.split('\n');
   const containerRef = useRef<HTMLDivElement>(null);
   const lineRefs = lines.map(() => useRef<HTMLDivElement>(null));
 
   useEffect(() => {
     // Scale each line of text by a factor of the difference of the container's width and the
-    // line's width, clampoed between the min and max widths.
+    // line's width, clamped between the min and max widths.
     const resizeText = () => {
       lineRefs.forEach((lineRef) => {
         if (lineRef.current && containerRef.current) {
