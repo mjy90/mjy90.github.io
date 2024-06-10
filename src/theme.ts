@@ -56,9 +56,9 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
           },
         } : {
           // palette values for dark mode
-          primary: { main: colors.mossGreen },
+          primary: { main: colors.feldgrauGreen },
           secondary: { main: grey[100] },
-          success: { main: colors.mossGreenCopilot },
+          success: { main: colors.mossGreen },
           error:  { main: colors.persianRedCopilot },
           divider: 'rgba(255, 255, 255, 0.12)',
           background: {
@@ -92,12 +92,12 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
       },
     },
     components: {
-      // MuiAppBar: {
-      //   defaultProps: {
-      //     enableColorOnDark: true,
-      //     sx: { backgroundImage: 'none' },
-      //   },
-      // },
+      MuiAppBar: {
+        defaultProps: {
+          enableColorOnDark: true,
+          sx: { backgroundImage: 'none' },
+        },
+      },
       MuiCard: {
         defaultProps: {
           variant: 'outlined',
@@ -109,16 +109,6 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
           padding: 3,
           alignItems: 'center',
         },
-        // variants: [
-        //   {
-        //     props: { container: true },
-        //     style: {
-        //       margin: 0,
-        //       padding: 0,
-        //       spacing: 3,
-        //     },
-        //   },
-        // ],
       },
       MuiLink: {
         defaultProps: {
