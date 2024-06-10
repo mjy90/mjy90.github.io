@@ -16,6 +16,7 @@ import Projects from './pages/Projects';
 import Resume from './pages/Resume';
 
 import { useTheme, ColorMode, ColorModeContext } from './theme';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function Copyright() {
   return (
@@ -31,7 +32,7 @@ function Copyright() {
 
 export default function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [colorMode, setColorMode] = useState<ColorMode>(prefersDarkMode ? 'dark' : 'light');
+  const [colorMode, setColorMode] = useLocalStorage<ColorMode>('colorMode', prefersDarkMode ? 'dark' : 'light');
   const theme = useTheme(colorMode);
 
   return (
