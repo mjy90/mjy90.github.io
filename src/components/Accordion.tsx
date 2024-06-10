@@ -36,7 +36,7 @@ export default function Accordion({ items }: AccordionProps) {
             </Typography>
           </MuiAccordionSummary>
           <MuiAccordionDetails>
-            { item.content instanceof Element ? (
+            { React.isValidElement(item.content) ? (
               item.content
             ) : (
               (Array.isArray(item.content) ? item.content : [item.content]).map((line, index) => (
