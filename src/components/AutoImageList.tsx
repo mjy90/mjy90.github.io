@@ -1,14 +1,16 @@
 import React from 'react';
 import {
+  Grow,
   ImageList,
   ImageListItem,
 } from '@mui/material';
 
 type AutoImageListProps = {
   images: string[];
+  transformOrigin?: string;
 };
 
-export default function AutoImageList({ images }: AutoImageListProps) {
+export default function AutoImageList({ images, transformOrigin = 'top left' }: AutoImageListProps) {
   const cols = Math.round(Math.sqrt(images.length));
   const rows = Math.ceil(images.length / cols);
   // Fill the first row out by blowing up the first image
@@ -21,16 +23,22 @@ export default function AutoImageList({ images }: AutoImageListProps) {
       sx={{ margin: 0 }}
     >
       {images.map((image, index) => (
-        <ImageListItem
+        <Grow
           key={index}
-          cols={index === 0 ? firstImageWidth : 1}
-          sx={{ fit: 'crop' }}
+          in={true}
+          style={{ transformOrigin }}
+          timeout={1000 * (index + 1)}
         >
-          <img
-            src={image}
-            style={{ width: '100%' }}
-          />
-        </ImageListItem>
+          <ImageListItem
+            cols={index === 0 ? firstImageWidth : 1}
+            sx={{ fit: 'crop' }}
+          >
+            <img
+              src={image}
+              style={{ width: '100%' }}
+            />
+          </ImageListItem>
+        </Grow>
       ))}
     </ImageList>
   );

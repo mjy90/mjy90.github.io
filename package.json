@@ -1,5 +1,5 @@
 {
-  "name": "material-ui-cra-ts",
+  "name": "myoung.dev",
   "version": "5.0.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,9 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "latest",
     "typescript": "latest"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21"
   },
   "scripts": {
     "start": "react-scripts start",

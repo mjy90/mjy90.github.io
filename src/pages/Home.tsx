@@ -7,18 +7,19 @@ import {
 import ScaledText from '../components/ScaledText';
 import MikeCheers from '../assets/Cheers.jpg';
 import MikeCheersMask from '../assets/parallelogram-mask.png';
+import Thonk from '../assets/thonk.svg';
 import Accordion from '../components/Accordion';
 
 import { faqs } from '../constants/faqs';
 
 export default function Home() {
   return (
-    <Grid container alignItems='center'>
+    <Grid container justifyContent='center' sx={{ pl: 3, pr: 0 }}>
       {/* Title row */}
-      <Grid item xs={12} md={7}>
-        <ScaledText text={"mike young,\nsoftware\ndeveloper"} />
+      <Grid item xs={12} sm={7}>
+        <ScaledText text={"mike young,\nsoftware\nengineer"} />
       </Grid>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} sm={4}>
         <img
           src={MikeCheers}
           alt="Mike, donning a goofy smile and holding a coffee mug, as if to say 'Cheers!'"
@@ -44,7 +45,7 @@ export default function Home() {
           inclusive, empowering, safe-to-fail engineering culture.
         </Typography>
         <Typography variant='body1' my={2}>
-          I get a particular kick out of front-end developoment. Call me simple, but I like the
+          I get a particular kick out of front-end development. Call me simple, but I like the
           instant gratification of seeing pretty pictures in the browser.
           That said, I also enjoy the challenge of architecting large systems, optimizing complex
           queries, or trying to make sense of that legacy code none dare touch.
@@ -56,24 +57,24 @@ export default function Home() {
       </Grid>
 
       {/* Philosophy */}
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={4}>
         {/* Show a random image */}
         <img
-          src="https://source.unsplash.com/random"
-          alt="Random image from Unsplash"
+          src={Thonk}
+          alt="Thonking emoji, a derpy version of the thinking emoji, thonking deeply about something."
           style={{ width: '100%' }}
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={8}>
         <ScaledText text='my philosophy' />
         <Typography variant='body1' my={2}>
           Build with compassion. Mistakes will happen. This stuff is hard.
         </Typography>
         <Typography variant='body1' my={2}>
-          Help, and be comfortable asking for help.
+          Help, and become comfortable asking for help.
         </Typography>
         <Typography variant='body1' my={2}>
-          Push your limits. Allow ego and absolutism to wither in the long shadow of curiosity!
+          Allow ego and absolutism to wither in the long shadow of curiosity! Muahahaha!!
         </Typography>
       </Grid>
 
