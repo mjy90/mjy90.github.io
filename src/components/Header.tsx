@@ -14,6 +14,7 @@ import {
   Tabs,
   Toolbar,
   Typography,
+  useMediaQuery,
   useScrollTrigger,
   useTheme,
 } from '@mui/material';
@@ -46,6 +47,7 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
   const location = useLocation();
   const page = pages.find(page => location.pathname === `/${page.path}`);
   const theme = useTheme();
+  const isTinyScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const menuOpen = Boolean(anchorElNav);
 
@@ -59,82 +61,78 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
   return (
     <HideOnScroll {...props}>
       <AppBar position='sticky'>
-        <Container>
+        <Container disableGutters={isTinyScreen}>
           <Toolbar disableGutters>
 
             {/* Mobile */}
-            <Box  sx={{display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
               {/* Nav menu */}
-              <Box sx={{ mr: 1}}>
-                <IconButton
-                  id='menu-button'
-                  size='large'
-                  color='inherit'
-                  aria-controls={menuOpen ? 'basic-menu' : undefined}
-                  aria-haspopup='true'
-                  aria-expanded={menuOpen ? 'true' : undefined}
-                  onClick={handleOpenNavMenu}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id='basic-menu'
-                  anchorEl={anchorElNav}
-                  open={menuOpen}
-                  onClose={handleCloseNavMenu}
-                  MenuListProps={{
-                    'aria-labelledby': 'menu-button',
-                  }}
-                >
-                  {pages.map((page, index) => (
-                    <MenuItem key={index} onClick={handleCloseNavMenu}>
-                      <Typography variant='button'>
-                        <Button href={page.path} color='secondary' aria-label={page.title}>
-                          {page.title}
-                          {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
-                        </Button>
-                      </Typography>
-                    </MenuItem>
-                  ))}
-                  <MenuItem>
-                    <Box sx={{ mx: 'auto' }}>
-                      <ColorModeToggle />
-                    </Box>
-                  </MenuItem>
-                </Menu>
-              </Box>
-
-              <Box sx={{ flexGrow: 1 }}>
-                {/* Breadcrumbs */}
-                <Breadcrumbs
-                  color='inherit'
-                  separator={<NavigateNextIcon fontSize="small" />}
-                  aria-label='breadcrumb'
-                >
-                  {/* Site name */}
-                  <Button href='/' color='inherit'>
-                    <Typography
-                      variant='h6'
-                      noWrap
-                      sx={{
-                        margin: 0,
-                        fontFamily: 'Courier New, monospace',
-                        fontWeight: 600,
-                        letterSpacing: '.3rem',
-                        textTransform: 'none',
-                      }}
-                    >
-                      myoung.dev
+              <IconButton
+                id='menu-button'
+                size='large'
+                color='inherit'
+                aria-controls={menuOpen ? 'basic-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={menuOpen ? 'true' : undefined}
+                onClick={handleOpenNavMenu}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id='basic-menu'
+                anchorEl={anchorElNav}
+                open={menuOpen}
+                onClose={handleCloseNavMenu}
+                MenuListProps={{
+                  'aria-labelledby': 'menu-button',
+                }}
+              >
+                {pages.map((page, index) => (
+                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                    <Typography variant='button'>
+                      <Button href={page.path} color='secondary' aria-label={page.title}>
+                        {page.title}
+                        {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
+                      </Button>
                     </Typography>
+                  </MenuItem>
+                ))}
+                <MenuItem>
+                  <Box sx={{ mx: 'auto' }}>
+                    <ColorModeToggle />
+                  </Box>
+                </MenuItem>
+              </Menu>
+
+              {/* Breadcrumbs */}
+              <Breadcrumbs
+                color='inherit'
+                // separator={<NavigateNextIcon fontSize='small' />}
+                aria-label='breadcrumb'
+              >
+                {/* Site name */}
+                <Button href='/' color='inherit'>
+                  <Typography
+                    variant='h6'
+                    noWrap
+                    sx={{
+                      margin: 0,
+                      fontFamily: 'Courier New, monospace',
+                      fontWeight: 600,
+                      letterSpacing: '.3rem',
+                      textTransform: 'none',
+                    }}
+                  >
+                    myoung.dev
+                  </Typography>
+                </Button>
+                {/* Current page */}
+                {location.pathname !== '/' && (
+                  <Button href={page?.path} color='inherit'>
+                    {page ? page.title : 'Home'}
                   </Button>
-                  {/* Current page */}
-                  {location.pathname !== '/' && (
-                    <Button href={page?.path} color='inherit'>
-                      {page ? page.title : 'Home'}
-                    </Button>
-                  )}
-                </Breadcrumbs>
-              </Box>
+                )}
+              </Breadcrumbs>
             </Box>
 
             {/* Desktop */}
