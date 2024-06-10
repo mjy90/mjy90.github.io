@@ -23,7 +23,7 @@ export default function Projects() {
     {
       title: 'Portfolio',
       description: `This website! It's responsive and has a light and a dark theme.
-        Built with React, MUI, GitHub Actions, and GitHub Pages.
+        Built with React, Material UI, GitHub Actions, and GitHub Pages.
       `,
       images: theme.palette.mode === 'light' ? [PortfolioLight] : [PortfolioDark],
       link: '',
