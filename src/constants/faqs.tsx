@@ -45,11 +45,11 @@ export const faqs: AccordionItem[] = [
           lives on 🫠 But that perfectionism also means I deliver tested, well-
           documented, readable, and sometimes even performant code!
         </Typography>
-        <Typography color='text.secondary'><em>
+        <Typography variant='caption' color='text.secondary'>
           What's this…? In a <strong>stunning</strong> twist—which could <strong>never
           </strong> have been foreseen—Mike's chosen weakness of discussion is actually
           a <strong>STRENGTH?!</strong> What incredible pageantry!
-        </em></Typography>
+        </Typography>
       </>
     ),
   },
