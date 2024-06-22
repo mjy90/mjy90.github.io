@@ -7,6 +7,7 @@ import {
   Button,
   Container,
   IconButton,
+  Link,
   Menu,
   MenuItem,
   Slide,
@@ -88,12 +89,16 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
                 }}
               >
                 {pages.map((page, index) => (
-                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    key={index}
+                    onClick={handleCloseNavMenu}
+                    component={Link}
+                    href={page.path}
+                    aria-label={page.title}
+                  >
                     <Typography variant='button'>
-                      <Button href={page.path} color='secondary' aria-label={page.title}>
                         {page.title}
                         {page.external && <Launch fontSize='inherit' sx={{ ml: 1 }} />}
-                      </Button>
                     </Typography>
                   </MenuItem>
                 ))}
@@ -107,7 +112,7 @@ export default function ResponsiveAppBar(props: React.PropsWithChildren) {
               {/* Breadcrumbs */}
               <Breadcrumbs
                 color='inherit'
-                // separator={<NavigateNextIcon fontSize='small' />}
+                separator={<NavigateNextIcon fontSize='small' />}
                 aria-label='breadcrumb'
               >
                 {/* Site name */}
