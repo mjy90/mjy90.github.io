@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Document, DocumentProps, Page, PageProps, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import { Skeleton, styled } from '@mui/material';
+import { Button, Paper, Skeleton, Snackbar, Stack, Tooltip, styled } from '@mui/material';
+import { Download } from '@mui/icons-material';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -25,17 +26,54 @@ const StyledDocument = styled(Document)<DocumentProps>(() => ({
 const StyledPage = styled(Page)<PageProps>(() => ({
   display: 'flex',
   justifyContent: 'center',
+  marginBottom: '1rem',
 }));
+
+type FloatingControlsProps = {
+  isLoading: boolean,
+};
+
+function FloatingControls({ isLoading }: FloatingControlsProps) {
+
+  return (
+    <Snackbar open={!isLoading} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+      <Paper>
+        <Stack direction='row'>
+          <Tooltip title='Download resume'>
+            <span>
+              <Button
+                variant='contained'
+                color='success'
+                component='a'
+                href={ResumeFile}
+                download="Mike Young's Resume"
+                aria-label='Download resume'
+                target='_blank'
+                rel='noreferrer'
+                disabled={isLoading}
+                endIcon={<Download />}
+                sx={{px: 2}}
+              >
+                Download Resume
+              </Button>
+            </span>
+          </Tooltip>
+        </Stack>
+      </Paper>
+    </Snackbar>
+  );
+}
 
 export default function Resume() {
   const [isLoading, setIsLoading] = useState(true);
-  const [numPages, setNumPages] = useState<number>();
+  const [numPages, setNumPages] = useState<number>(0);
   const onDocumentLoadSuccess = ({ numPages: nextNumPages }: PDFDocumentProxy): void => {
     setIsLoading(false);
     setNumPages(nextNumPages);
     console.log(`Loaded ${nextNumPages} pages`);
   }
 
+  // Resize the page width to fit the viewport
   const [pageWidth, setPageWidth] = useState<number>(Math.min(800, window.innerWidth));
   useEffect(() => {
     const resizePage = () => {
@@ -65,13 +103,16 @@ export default function Resume() {
         />
       }
     >
-      {Array.from(new Array(numPages), (_, index) => (
+      { Array.from(new Array(numPages), (_, index) => (
         <StyledPage
           key={`page_${index + 1}`}
           pageNumber={index + 1}
           width={pageWidth}
+          renderAnnotationLayer={false}
         />
       ))}
+
+      <FloatingControls isLoading={isLoading} />
     </StyledDocument>
   );
 }
