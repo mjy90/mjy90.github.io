@@ -45,7 +45,10 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
             contrastText: grey[100],
           },
           secondary: { main: grey[900] },
-          success: { main: colors.mossGreen },
+          success: {
+            main: colors.mossGreen,
+            contrastText: colors.text.dark.primary,
+          },
           error:  { main: colors.persianRed },
           divider: grey[800],
           background: {
@@ -58,7 +61,10 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
           // palette values for dark mode
           primary: { main: colors.feldgrauGreen },
           secondary: { main: grey[100] },
-          success: { main: colors.mossGreen },
+          success: {
+            main: colors.mossGreen,
+            contrastText: colors.text.dark.primary,
+          },
           error:  { main: colors.persianRedCopilot },
           divider: 'rgba(255, 255, 255, 0.12)',
           background: {
