@@ -21,7 +21,7 @@ import { ArrowUpward, ArrowDownward, Download } from '@mui/icons-material';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-import ResumeFile from "../assets/Mike Young's Resume.pdf";
+import ResumeFile from '../assets/Resume.pdf';
 
 // Start the worker to load the PDF
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
