@@ -24,7 +24,10 @@ export default function Projects() {
     {
       title: 'Portfolio',
       description: `This website! It's responsive and has a light and a dark theme.
-        Built with React, TypeScript, Material UI, GitHub Actions, and GitHub Pages.
+        Built and hosted for free with React, TypeScript, Material UI, GitHub Actions,
+        and GitHub Pages.
+        Click "On GitHub" in the header to check out the source code!
+        Spin up your own site by following the README 🚀
       `,
       images: theme.palette.mode === 'light' ? [PortfolioLight] : [PortfolioDark],
       link: '',
