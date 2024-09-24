@@ -15,6 +15,7 @@ import DocFinder from '../assets/Doc Finder.png'
 import Mikerspace from '../assets/Mikerspace.png'
 import MikerspaceProducts from '../assets/Mikerspace Products.png'
 import MikeWithPictureFrameAndDumbSmile from '../assets/Mike with Picture Frame and Dumb Smile.jpg'
+import PlexiCamDemo from '../assets/PlexiCam Demo.png'
 
 export default function Projects() {
   const theme = useTheme();
@@ -23,7 +24,7 @@ export default function Projects() {
     {
       title: 'Portfolio',
       description: `This website! It's responsive and has a light and a dark theme.
-        Built with React, Material UI, GitHub Actions, and GitHub Pages.
+        Built with React, TypeScript, Material UI, GitHub Actions, and GitHub Pages.
       `,
       images: theme.palette.mode === 'light' ? [PortfolioLight] : [PortfolioDark],
       link: '',
@@ -51,6 +52,19 @@ export default function Projects() {
       `,
       images: [Mikerspace, MikerspaceProducts, MikeWithPictureFrameAndDumbSmile],
       link: 'https://miker.space',
+    },
+    {
+      title: 'PlexiCam Demo',
+      description: `An interactive demo I built for trying out the PlexiCam, a transparent camera
+        mount that helps you maintain eye contact during video calls, before you buy it.
+        It creates a virtual desktop experience in which you can arrange windows to suit your
+        workflow and drag a webcam across the screen, constraining the movement
+        of the PlexiCam's constituent parts. With a little bit of math, it's able to simulate the
+        actual size of PlexiCam on your screen, so you can see how it will fit into your setup.
+        Built with HTML canvas and JavaScript.
+      `,
+      images: [PlexiCamDemo],
+      link: 'https://www.plexicam.com/pages/simulation',
     },
   ], [theme.palette.mode]);
 
