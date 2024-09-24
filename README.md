@@ -17,7 +17,7 @@
   - [5. (Optional) Configure a Custom Domain](#5-optional-configure-a-custom-domain)
 - [Notes on Technical Decisions](#notes-on-technical-decisions)
   - [Why GitHub Pages?](#why-github-pages)
-  - [Why use a compnent library like MUI?](#why-use-a-compnent-library-like-mui)
+  - [Why use a component library like Material UI?](#why-use-a-component-library-like-material-ui)
   - [Why are you using a `HashRouter` instead of a `BrowserRouter`?](#why-are-you-using-a-hashrouter-instead-of-a-browserrouter)
 
 # Welcome to my software portfolio!
@@ -162,14 +162,14 @@ I'm a full-stack dev through and through, but I especially love front-end. So, w
 
 I also wanted to show off my ability to work with GitHub Actions, which I hadn't used before. I'd only ever used CircleCI and Heroku before. The CI/CD pipeline I set up for this project was a great learning experience and will be a valuable tool in future projects.
 
-## Why use a compnent library like MUI?
+## Why use a component library like Material UI?
 I've never really understood the appeal of creating a React component library from scratch, frankly. There's a *lot* of boilerplate involved in that endeavor, and I just don't think it's worth your time if it's in the service of getting something else done.
 
-Libraries like MUI, Radix, Chakra, *etc.* grant you:
+UI libraries like Material, Radix, Semantic, Chakra, *etc.* grant you:
 1. All the building blocks you could ever need for a simple-to-moderately-complex website,
 2. Fantastic visual documentation,
 3. An active support community, and
-4. In the case of MUI (and perhaps others), a nestable `ThemeProvider`, an icon library, and community template store.
+4. In the case of Material UI (and perhaps others), a nestable `ThemeProvider`, an icon library, and community template store.
 
 These things aren't limiting either. You can always create that hyper-specific data visualizer the Sales Team asked for, that map view customers are begging for, or some other nonstandard component without the styles and standards of the component library dictating implementation.
 
