@@ -15,6 +15,7 @@ import DocFinder from '../assets/Doc Finder.png'
 import Mikerspace from '../assets/Mikerspace.png'
 import MikerspaceProducts from '../assets/Mikerspace Products.png'
 import MikeWithPictureFrameAndDumbSmile from '../assets/Mike with Picture Frame and Dumb Smile.jpg'
+import PlexiCamDemo from '../assets/PlexiCam Demo.png'
 
 export default function Projects() {
   const theme = useTheme();
@@ -51,6 +52,15 @@ export default function Projects() {
       `,
       images: [Mikerspace, MikerspaceProducts, MikeWithPictureFrameAndDumbSmile],
       link: 'https://miker.space',
+    },
+    {
+      title: 'PlexiCam Demo',
+      description: `An interactive demo I built for trying out the PlexiCam, a transparent camera
+        mount that helps you maintain eye contact during video calls. It uses HTML canvas and
+        vanilla JS.
+      `,
+      images: [PlexiCamDemo],
+      link: 'https://www.plexicam.com/pages/simulation',
     },
   ], [theme.palette.mode]);
 
