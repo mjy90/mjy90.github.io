@@ -24,10 +24,10 @@
 This is a little React app intended to showcase my mad tech skillz and keep my coding chops sharp during an extended bout of unemployment. Woohoo! It's nothing mind-blowing or revolutionary, but I think it showcases some of my technical capability, attention to detail, and eye for design.
 
 ## Tools Used
-This project uses React, TypeScript, Jest, and GitHub Actions. It's hosted for free with GitHub Pages, and I used [NameCheap](https://www.namecheap.com/) to buy and configure the custom domain [myoung.dev](https://myoung.dev). I also used [MUI](https://mui.com/) (formerly known as MaterialUI) for its ample component library and powerful theming tools, reducing the amount of overhead involved in getting the UI looking snazzy.
+This project uses React, TypeScript, Jest, and GitHub Actions. It's hosted for free with GitHub Pages, and I used [NameCheap](https://www.namecheap.com/) to buy and configure the custom domain [myoung.dev](https://myoung.dev). I also used [Material UI](https://mui.com/) for its ample component library and powerful theming tools, reducing the amount of overhead involved in getting the UI looking snazzy.
 
 ## What This Repo Showcases
-**Technical Skill** — That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React, GitHub Actions, and the Node ecosystem. See the "Just an Absolute Word Salad of Skills and Tools" section of [my resume](https://www.myoung.dev/#/resume) for other tools I'm familiar with.
+**Technical Skill** — That I can write TypeScript, HTML, CSS, and Markdown, and that I know my way around React, GitHub Actions, and the Node ecosystem. See [my resume](https://www.myoung.dev/#/resume) for other tools I'm familiar with.
 
 **Focus on Quality** — That I ensure my code is adequately tested and documented. One of my primary focuses when writing code is that it's approachable to future devs and doesn't cause headaches. I'm not obsessed with code coverage percentages, but I do believe that all happy paths and reasonably foreseeable side paths should be tested when code ships. As bugs arise, tests for the edge cases addressed should ship with the fix.
 

@@ -5,7 +5,7 @@ import { AccordionItem } from '../components/Accordion';
 
 export const faqs: AccordionItem[] = [
   {
-    title: "What's your favorite part of being a software developer?",
+    title: "Why software development?",
     content: [
       `I get most of my fulfillment from helping others. I enjoy taking time to
       unstick others and mentor junior folks through pair programming, code review,
@@ -20,7 +20,7 @@ export const faqs: AccordionItem[] = [
     content: `
       I don't know how great the accomplishment was to others, but my most formative
       accomplishment was the Farm Manager I built at Crop One, a now-defunct
-      hydroponics lettuce company. It was a system used by the Production and
+      hydroponic lettuce company. It was a system used by the Production and
       Science teams to improve the efficiency, traceability, and data integrity of
       operations around the farm. It employed intuitive UIs and data visualization
       that mimicked real-life infrastructure.

@@ -118,8 +118,8 @@ export function useTheme(colorMode: 'light' | 'dark'): Theme {
       },
       MuiLink: {
         defaultProps: {
-          underline: 'hover',
-          color: 'inherit',
+          // underline: 'hover',
+          // color: 'inherit',
           component: LinkBehavior,
         } as LinkProps,
       },
